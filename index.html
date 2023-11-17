@@ -7,19 +7,22 @@
     <title>Personal Website</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/cdca6c9d9b.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="header">
     <div class="container">
         <nav>
             <img src="personal-portfolio-img/logo.png" class="logo">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
+            <ul id="side-menu"> 
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <i class="fa-solid fa-xmark"  onclick="closeMenu()"></i>
             </ul>
+            <i class="fa-solid fa-bars" onclick="openMenu()"></i>
         </nav>
         <div class="header-text">
             <p>UI/UX Designer</p>
@@ -129,12 +132,41 @@
         <a href="#" class="btn">See more</a>
     </div>
 </div>
-
+<!-----------contact---------------->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>danielamezquita5101@gmail.com</p>
+                <p><i class="fa-solid fa-square-phone"></i>(214)-960-0252</p>
+                <div class="social-icons">
+                <a href="https://www.youtube.com/MrHonorStudio"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.twitch.tv/MrHonorLive"><i class="fa-brands fa-twitch"></i></a>
+                <a href="https://www.instagram.com/dannyaqa/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/danny-amezquita/"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="personal-portfolio-img/my-cv.pdf" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright ©️ Made with <i class="fa-solid fa-heart"></i> by Danny Amezquita </p>
+    </div>
+</div>
 
 
 
 <script>
-
     var tabLinks = document.getElementsByClassName("tab-links");
     var tabContents = document.getElementsByClassName("tab-contents");
     function opentab(tabName){
@@ -149,5 +181,34 @@
     }
 </script>
 
+<script>
+
+    var sideMenu = document.getElementById("side-menu");
+    function openMenu(){
+        sideMenu.style.right = "0";
+    }
+    var sideMenu = document.getElementById("side-menu");
+    function closeMenu(){
+        sideMenu.style.right = "-200px";
+    }
+
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz1U_oJxFRK0-1Bfcdznk2YU1MtG0Y-aWDHax8wR2RvNKCs93xHJxg00Ux7fjWfUDyTSw/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById('msg')
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully!"
+            setTimeout(function(){ 
+                msg.innerHTML = "" }, 5000)
+                form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+</script>
 </body>
 </html>
