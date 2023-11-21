@@ -11,10 +11,11 @@ body {
     background: #080808;
     color: #fff
 }
+
 #header{
     width: 100%;
     height: 100vh;
-    background-image: url(personal-portfolio-img/background.png);
+    background-image: url(personal-portfolio-img/HeadshotGIMP.png);
     background-size: cover;
     background-position: center;
 }
@@ -326,7 +327,7 @@ nav .fa-solid{
 
 @media only screen and (max-width: 600px){
     #header{
-        background-image: url(personal-portfolio-img/phone-background.png);
+        background-image: url(personal-portfolio-img/phone-bg-GIMP.png);
     }
     .header-text{
         margin-top: 100%;
