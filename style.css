@@ -332,9 +332,13 @@ nav .fa-solid{
     .header-text{
         margin-top: 100%;
         font-size: 16px;
+        color: white; /* Ensure text color is set for contrast */
+        text-shadow: 2px 2px 4px  black; /* Add drop shadow for text */
     }
     .header-text h1{
         font-size: 30px;
+        -webkit-text-stroke: 1px black; /* Add text stroke for webkit browsers */
+        text-shadow: 2px 2px 4px #000000; /* Add drop shadow for text */
     }
     nav .fa-solid{
         display: block;
